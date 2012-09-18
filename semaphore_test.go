@@ -20,7 +20,7 @@ func Test(t *testing.T) {
 	go func() {
 		g.Add(1)
 		if s.AcquireWithin(5, time.Second*3) {
-			s.ReleaseMany(10)
+			s.ReleaseMany(5)
 			fmt.Println("Acquired within")
 		} else {
 			fmt.Println("Acquire timout")
