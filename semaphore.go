@@ -106,21 +106,3 @@ func (s *Semaphore) DrainPermits() int {
 	}
 	return n
 }
-
-/*
-acquire() 
-acquire(int permits) 
-acquireUninterruptibly() 
-acquireUninterruptibly(int permits) 
-availablePermits() 
-drainPermits() 
-getQueueLength() 
-hasQueuedThreads() 
-isFair() 
-reducePermits(int reduction) 
-release() 
-release(int permits) 
-toString() 
-tryAcquire() 
-tryAcquire(int permits) 
-*/
