@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/abiosoft/semaphore/status.png)](https://drone.io/github.com/abiosoft/semaphore/latest)
+
 semaphore
 =========
 
@@ -7,4 +9,4 @@ Semaphore implementation in golang
 documentation
 =============
 
-http://go.pkgdoc.org/github.com/abiosoft/semaphore
+http://godoc.org/github.com/abiosoft/semaphore

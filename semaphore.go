@@ -49,7 +49,7 @@ func (s *Semaphore) AcquireMany(n int) {
 }
 
 //Similar to AcquireMany() but cancels if duration elapse before getting the permits.
-//Returns true if successful and false if timeout occurs. 
+//Returns true if successful and false if timeout occurs.
 func (s *Semaphore) AcquireWithin(n int, d time.Duration) bool {
 	timeout := make(chan bool, 1)
 	cancel := make(chan bool, 1)
