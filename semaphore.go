@@ -20,10 +20,17 @@ func New(permits int) *Semaphore {
 	if permits < 1 {
 		panic("Invalid number of permits. Less than 1")
 	}
+
+	// fill channel buffer
+	channel := make(chan struct{}, permits)
+	for i := 0; i < permits; i++ {
+		channel <- struct{}{}
+	}
+
 	return &Semaphore{
 		permits,
 		permits,
-		make(chan struct{}, permits),
+		channel,
 		&sync.RWMutex{},
 		&sync.Mutex{},
 	}
@@ -34,7 +41,7 @@ func (s *Semaphore) Acquire() {
 	s.aMutex.Lock()
 	defer s.aMutex.Unlock()
 
-	s.channel <- struct{}{}
+	<-s.channel
 	s.avail--
 }
 
@@ -49,7 +56,7 @@ func (s *Semaphore) AcquireMany(n int) error {
 
 	s.avail -= n
 	for ; n > 0; n-- {
-		s.channel <- struct{}{}
+		<-s.channel
 	}
 	s.avail += n
 	return nil
@@ -84,7 +91,7 @@ func (s *Semaphore) Release() {
 	s.rMutex.Lock()
 	defer s.rMutex.Unlock()
 
-	<-s.channel
+	s.channel <- struct{}{}
 	s.avail++
 }
 
