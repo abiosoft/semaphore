@@ -5,4 +5,4 @@ sudo: false
 script:
   - go vet
   - go build
-  - go test -cover
+  - go test -race -cover

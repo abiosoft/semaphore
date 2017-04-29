@@ -23,7 +23,7 @@ func Test(t *testing.T) {
 			s.ReleaseMany(5)
 			fmt.Println("Acquired within")
 		} else {
-			fmt.Println("Acquire timout")
+			fmt.Println("Acquire timeout")
 		}
 		g.Done()
 	}()
@@ -37,11 +37,11 @@ func Test(t *testing.T) {
 }
 
 func aq(s *Semaphore, i int) {
-	fmt.Println("Waiting...", i, " ", s.AvailablePermits())
+	fmt.Println("Waiting to acquire", i, "permits,  avail:", s.AvailablePermits())
 	s.AcquireMany(i)
-	fmt.Println("Started...", i, " ", s.AvailablePermits())
+	fmt.Println("Acquired", i, "permits, avail:", s.AvailablePermits())
 	time.Sleep(time.Second * 3)
 	s.ReleaseMany(i)
-	fmt.Println("Done...", i, " ", s.AvailablePermits())
+	fmt.Println("Done. Released", i, "permits, avail:", s.AvailablePermits())
 	g.Done()
 }
