@@ -20,6 +20,7 @@ Acquire
 sem.Acquire() // one
 sem.AcquireMany(n) // multiple
 sem.AcquireWithin(n, time.Second * 5) // timeout after 5 sec
+sem.AcquireContext(ctx, n) // acquire with context
 ```
 Release
 ```go
