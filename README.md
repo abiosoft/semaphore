@@ -2,7 +2,7 @@
 semaphore
 =========
 
-Semaphore implementation in golang
+Semaphore in Go
 
 [![Build Status](https://travis-ci.org/abiosoft/semaphore.svg?branch=master)](https://travis-ci.org/abiosoft/semaphore)
 [![GoDoc](https://godoc.org/github.com/abiosoft/semaphore?status.svg)](https://godoc.org/github.com/abiosoft/semaphore)
